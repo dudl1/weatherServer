@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Погода в <%= weather ? weather.location.name : 'Неизвестно' %></title>
+    <style>
+      body { font-family: Arial, sans-serif; }
+      .weather { margin: 20px; }
+      .error { color: red; }
+    </style>
+</head>
+<body>
+  <div class="weather">
+    <h1>Погода в <%= weather ? weather.location.name : 'Неизвестно' %></h1>
+    <% if (weather) { %>
+      <p><strong>Температура:</strong> <%= weather.current.temp_c %>°C</p>
+      <p><strong>Ощущается как:</strong> <%= weather.current.feelslike_c %>°C</p>
+      <p><strong>Состояние:</strong> <%= weather.current.condition.text %></p>
+      <img src="<%= weather.current.condition.icon %>" alt="<%= weather.current.condition.text %>">
+    <% } else { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+  </div>
+</body>
+</html>
